@@ -24,7 +24,8 @@ async function updateTagSettings (request, response) {
     background,
     flag,
     coin,
-    font
+    font,
+    nameColor
   } = request.body
   const username = request.session?.username
 
@@ -67,7 +68,8 @@ async function updateTagSettings (request, response) {
     !isValidCoin(coin) ||
     !isValidFont(font) ||
     !isBoolean(showAvatar) ||
-    !isBoolean(showMii)
+    !isBoolean(showMii) ||
+    isBlank(nameColor)
   ) {
     return response
       .status(HTTP_CODE.BAD_REQUEST)
@@ -90,7 +92,8 @@ async function updateTagSettings (request, response) {
         coin,
         font,
         show_avatar: +showAvatar,
-        show_mii: +showMii
+        show_mii: +showMii,
+        nameColor
       }
     })
     await renderTag(user)
