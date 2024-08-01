@@ -8,6 +8,7 @@ import ENV from '@/lib/constants/environmentVariables'
 import { withSession } from '@/lib/iron-session'
 import prisma from '@/lib/db'
 import Contributor from '@/components/credits/Contributor'
+import AppNavbar from '@/components/shared/AppNavbar'
 
 export const getServerSideProps = withSession(async ({ req }) => {
   const username = req.session?.username
@@ -34,6 +35,8 @@ export const getServerSideProps = withSession(async ({ req }) => {
 
 function CreditsPage ({ display_name: wiitagName }) {
   return (
+    <>
+    <AppNavbar />
     <Container>
       <NextSeo
         title='Credits'
@@ -136,6 +139,7 @@ function CreditsPage ({ display_name: wiitagName }) {
         </Col>
       </Row>
     </Container>
+    </>
   )
 }
 
