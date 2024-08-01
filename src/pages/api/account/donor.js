@@ -4,6 +4,7 @@ import { userIsMod } from '@/lib/utils/databaseUtils'
 import prisma from '@/lib/db'
 import logger from '@/lib/logger'
 import { isBlank } from '@/lib/utils/utils'
+import { doRender } from '@/lib/riitag/neo/renderer'
 
 async function exportData (request, response) {
   const loggedInUser = request.session?.username
@@ -33,7 +34,7 @@ async function exportData (request, response) {
   }
 
   try {
-    await prisma.user.update({
+    const userObj = await prisma.user.update({
       data: {
         isDonor: status
       },
@@ -42,6 +43,7 @@ async function exportData (request, response) {
       }
     })
 
+    doRender(userObj)
     return response.status(HTTP_CODE.OK).send(null)
   } catch (error) {
     logger.error(error)
