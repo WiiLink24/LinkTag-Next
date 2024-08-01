@@ -20,3 +20,17 @@ export async function saveFile (filepath, file: any | null) {
 
   logger.info('File saved successfully')
 }
+
+export async function saveFileBuffer (filepath, file) {
+  logger.info(`Saving file to ${filepath}`);
+  if (!(await exists(filepath))) {
+    await fs.promises.mkdir(path.dirname(filepath), { recursive: true });
+  }
+
+  try {
+    await fs.promises.writeFile(filepath, file);
+    logger.info('File saved successfully');
+  } catch (error) {
+    logger.error('Error saving the file:', error);
+  }
+}

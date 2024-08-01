@@ -45,7 +45,8 @@ export const getServerSideProps = withSession(async ({ req }) => {
         font: true,
         show_avatar: true,
         show_mii: true,
-        nameColor: true
+        nameColor: true,
+        isDonor: true
       }
     })
     : null
@@ -59,10 +60,10 @@ export const getServerSideProps = withSession(async ({ req }) => {
     }
   }
 
-  return { props: { tagInfo: session, language: session?.language || 'en' } }
+  return { props: { tagInfo: session, user: sessionAccount, language: session?.language || 'en' } }
 })
 
-function EditPage ({ tagInfo, language }) {
+function EditPage ({ tagInfo, user, language }) {
   tagInfo.show_avatar = Boolean(tagInfo.show_avatar)
   tagInfo.show_mii = Boolean(tagInfo.show_mii)
 
@@ -117,8 +118,6 @@ function EditPage ({ tagInfo, language }) {
 
           if (!values.background) {
             errors.background = 'Required'
-          } else if (BACKGROUNDS.includes(values.background) === false) {
-            errors.background = 'Invalid Background'
           }
 
           if (!values.flag) {
@@ -207,15 +206,17 @@ function EditPage ({ tagInfo, language }) {
                 <Col lg={6}>
                   <ImagesCard
                     values={values}
+                    user={user}
                     errors={errors}
                     handleChange={handleChange}
                   />
 
+                  {tagInfo.isDonor &&
                   <DonorsCard
                     values={values}
                     errors={errors}
                     handleChange={handleChange}
-                  />
+                  />}
                 </Col>
               </Row>
             </Container>

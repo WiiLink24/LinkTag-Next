@@ -63,7 +63,6 @@ async function updateTagSettings (request, response) {
     !isValidCoverType(coverType) ||
     !isValidCoverRegion(coverRegion) ||
     !isValidOverlay(overlay) ||
-    BACKGROUNDS.includes(background) === false ||
     !isValidFlag(flag) ||
     !isValidCoin(coin) ||
     !isValidFont(font) ||
