@@ -21,6 +21,7 @@ import ImagesCard from '@/components/edit/ImagesCard'
 import ENV from '@/lib/constants/environmentVariables'
 import LanguageContext from '@/components/shared/LanguageContext'
 import AppNavbar from '@/components/shared/AppNavbar'
+import DonorsCard from '@/components/edit/DonorsCard'
 
 export const getServerSideProps = withSession(async ({ req }) => {
   // get the current user session
@@ -203,6 +204,12 @@ function EditPage ({ tagInfo, language }) {
 
                 <Col lg={6}>
                   <ImagesCard
+                    values={values}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />
+
+                  <DonorsCard
                     values={values}
                     errors={errors}
                     handleChange={handleChange}
