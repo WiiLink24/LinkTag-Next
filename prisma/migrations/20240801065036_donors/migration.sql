@@ -1,2 +1,3 @@
 -- AlterTable
 ALTER TABLE "user" ADD COLUMN     "isDonor" BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE "user" ADD COLUMN     "nameColor" TEXT NOT NULL DEFAULT '#000000';

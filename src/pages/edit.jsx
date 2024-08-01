@@ -44,7 +44,8 @@ export const getServerSideProps = withSession(async ({ req }) => {
         coin: true,
         font: true,
         show_avatar: true,
-        show_mii: true
+        show_mii: true,
+        nameColor: true
       }
     })
     : null
@@ -80,7 +81,8 @@ function EditPage ({ tagInfo, language }) {
           background: tagInfo.background,
           flag: tagInfo.flag,
           coin: tagInfo.coin,
-          font: tagInfo.font
+          font: tagInfo.font,
+          nameColor: tagInfo.nameColor
         }}
         validate={(values) => {
           const errors = {}

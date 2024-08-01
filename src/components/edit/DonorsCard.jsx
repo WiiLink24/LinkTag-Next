@@ -4,20 +4,25 @@ import { Alert, Card, Col, Row } from 'react-bootstrap'
 import LocalizedString from '../shared/LocalizedString'
 import LanguageContext from '../shared/LanguageContext'
 
-
-function ColorBox ({ color }) {
+function ColorBox ({ color, onClick, current }) {
   return (
-    <div style={{ backgroundColor: color, width: '48px', height: '48px', marginLeft: '8px', marginTop: '8px', borderRadius: '8px' }}>
-
-    </div>
+    <div id={color} style={{ backgroundColor: color, width: '48px', height: '48px', marginLeft: '8px', marginTop: '8px', boxShadow: current === color ? '0px 0px 7px 2px #0099FF' : null, borderRadius: '8px' }} onClick={(e) => onClick(e, color)} />
   )
 }
 
 ColorBox.propTypes = {
-  color: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  current: PropTypes.string.isRequired
 }
 
 function DonorsCard ({ values, errors, handleChange }) {
+  const setColor = (e, color) => {
+    console.log('Set color to ' + color)
+    values.nameColor = color
+    handleChange(e)
+  }
+
   return (
     <LanguageContext.Helper.Consumer>
       {(lang) => (
@@ -28,12 +33,12 @@ function DonorsCard ({ values, errors, handleChange }) {
               <Col md={5}>
                 <p><LocalizedString string='name_color' /></p>
                 <div className='colorboxes' style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
-                  <ColorBox color={'#000000'} />
-                  <ColorBox color={'#1cb41c'} />
-                  <ColorBox color={'#FFD700'} />
-                  <ColorBox color={'#0055DD'} />
-                  <ColorBox color={'#d73216'} />
-                  <ColorBox color={'#a81bc4'} />
+                  <ColorBox current={values.nameColor} color={'#000000'} onClick={setColor} />
+                  <ColorBox current={values.nameColor} color={'#1cb41c'} onClick={setColor} />
+                  <ColorBox current={values.nameColor} color={'#FFD700'} onClick={setColor} />
+                  <ColorBox current={values.nameColor} color={'#0055DD'} onClick={setColor} />
+                  <ColorBox current={values.nameColor} color={'#d73216'} onClick={setColor} />
+                  <ColorBox current={values.nameColor} color={'#a81bc4'} onClick={setColor} />
                 </div>
                 {errors.overlay && (
                   <Alert className='mt-2 p-2' variant='danger'>

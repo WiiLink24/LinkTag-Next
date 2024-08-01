@@ -131,6 +131,7 @@ model user {
   isPublic       Int             @default(1) @db.SmallInt
   publicOverride Int?            @db.SmallInt
   isDonor        Boolean         @default(false)
+  nameColor      String          @default("#000000")
   accounts       accounts[]
   banned_user    banned_user[]
   game_sessions  game_sessions[]
