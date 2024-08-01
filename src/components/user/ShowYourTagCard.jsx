@@ -59,7 +59,7 @@ function ShowYourTagCard ({ username }) {
             <EmbedText
               max={max}
               username={username}
-              text={`<a href="${ENV.BASE_URL}/user/##USERID##"><img src="${ENV.BASE_URL}/##USERID##/##TAG##" alt="RiiTag" /></a>`}
+              text={`<a href="${ENV.BASE_URL}/user/##USERID##"><img src="${ENV.BASE_URL}/##USERID##/##TAG##" alt="LinkTag" /></a>`}
             />
           </Tab>
           <Tab eventKey='bbcode' title='BBCode'>
