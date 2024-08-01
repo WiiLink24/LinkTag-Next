@@ -41,6 +41,7 @@ export const getServerSideProps = withSession(async ({ req, query }) => {
       role: true,
       isBanned: true,
       isPublic: true,
+      isDonor: true,
       publicOverride: true,
       banned_user: true,
       playlog: {
