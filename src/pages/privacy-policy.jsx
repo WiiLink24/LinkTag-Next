@@ -6,6 +6,7 @@ import prisma from '@/lib/db'
 import styles from '@/styles/modules/editor-text.module.scss'
 import ENV from '@/lib/constants/environmentVariables'
 import { isBlank } from '@/lib/utils/utils'
+import AppNavbar from '@/components/shared/AppNavbar'
 
 export async function getStaticProps () {
   const privacyPolicy = await prisma.sys.findUnique({
@@ -26,6 +27,8 @@ export async function getStaticProps () {
 
 function PrivacyPolicyPage ({ privacyPolicy }) {
   return (
+    <>
+    <AppNavbar />
     <Container>
       <NextSeo
         title='Privacy Policy'
@@ -45,6 +48,7 @@ function PrivacyPolicyPage ({ privacyPolicy }) {
         />
       </Row>
     </Container>
+    </>
   )
 }
 
