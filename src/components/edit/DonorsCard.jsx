@@ -11,11 +11,11 @@ function ColorBox ({ color, onClick, current }) {
 }
 
 function ColorPicker ({ current, setColor }) {
-  const [color, setColorState] = useState('#000000')
+  const [color, setColorState] = useState(current)
 
   return (
     <div id={current} style={{ width: '48px', height: '48px', marginLeft: '8px', marginTop: '8px', boxShadow: current === color ? '0px 0px 7px 2px #0099FF' : null }}>
-      <input id={current} type='color' style={{ height: '100%' }} color={current} onChange={(e) => { setColorState(e.target.value); setColor(e, e.target.value) }} />
+      <input id={current} type='color' style={{ height: '100%' }} value={current} onChange={(e) => { setColorState(e.target.value); setColor(e, e.target.value) }} />
       <p style={{ fontSize: '10px', textAlign: 'center', width: '48px', color: '#DDD' }}>Custom</p>
     </div>
   )
@@ -34,7 +34,6 @@ ColorBox.propTypes = {
 
 function DonorsCard ({ values, errors, handleChange }) {
   const setColor = (e, color) => {
-    console.log('Set color to ' + color)
     values.nameColor = color
     handleChange(e)
   }
