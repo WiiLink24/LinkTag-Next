@@ -155,12 +155,12 @@ function EditPage ({ tagInfo, user, language }) {
                 render ({ data, toastProps }) {
                   if (data.status !== 200) {
                     toastProps.type = 'error'
-                    return 'An error occured, please try again later'
+                    return 'An error occurred, please try again later'
                   }
                   return 'Saved!'
                 }
               },
-              error: 'An error occured, please try again later.'
+              error: 'An error occurred, please try again later.'
             }
           )
 

@@ -78,7 +78,7 @@ function ImagesCard ({ values, errors, handleChange, user }) {
 
                     values.background = `${user}.png`
 
-                    return fetch('/api/account/background-upload', {
+                    return fetch('/api/account/background', {
                       method: 'POST',
                       body: formData
                     })
@@ -94,7 +94,7 @@ function ImagesCard ({ values, errors, handleChange, user }) {
                 <img
                   alt='Background Preview'
                   className='img-thumbnail mx-auto d-block'
-                  src={!Number.isNaN(Number(values.background.replace(/.*\//, '').replace(/\.png$/, ''))) ? 'api/account/uploaded-background' : `/img/background/${values.background}`}
+                  src={!Number.isNaN(Number(values.background.replace(/.*\//, '').replace(/\.png$/, ''))) ? 'api/account/background' : `/img/background/${values.background}`}
                 />
               </Col>
             </Row>
