@@ -1,9 +1,8 @@
-import { React, useState } from 'react'
+import { React } from 'react'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import useInfo from '@/lib/swr-hooks/useInfo'
-import ConfirmationModal from '../shared/ConfirmationModal'
-import { Button, Form } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
 export default function DonorButton ({ isDonor, id }) {
