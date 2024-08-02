@@ -19,7 +19,7 @@ const backgrounds = BACKGROUNDS.map((background) => ({
   label: background
 }))
 
-function ImagesCard ({ values, errors, handleChange, user }) {
+function ImagesCard ({ values, errors, handleChange, username }) {
   return (
     <LanguageContext.Helper.Consumer>
       {(lang) => (
@@ -76,7 +76,7 @@ function ImagesCard ({ values, errors, handleChange, user }) {
                     const formData = new FormData()
                     formData.append('file', event.currentTarget.files[0])
 
-                    values.background = `${user}.png`
+                    values.background = `${username}.png`
 
                     return fetch('/api/account/background', {
                       method: 'POST',
@@ -158,7 +158,7 @@ ImagesCard.propTypes = {
   values: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
-  user: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired
 }
 
 export default ImagesCard

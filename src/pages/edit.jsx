@@ -205,7 +205,7 @@ function EditPage ({ tagInfo, user, language }) {
                 <Col lg={6}>
                   <ImagesCard
                     values={values}
-                    user={user}
+                    username={user}
                     errors={errors}
                     handleChange={handleChange}
                   />
