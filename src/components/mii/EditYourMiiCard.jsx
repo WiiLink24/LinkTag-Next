@@ -227,7 +227,7 @@ function EditYourMiiCard ({ miiInfo }) {
           </Formik>
         </Card.Body>
       </Card>
-    ) }
+      ) }
     </LanguageContext.Helper.Consumer>
   )
 }
