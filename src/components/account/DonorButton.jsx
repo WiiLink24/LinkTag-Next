@@ -21,7 +21,7 @@ export default function DonorButton ({ isDonor, id }) {
       })
     })
     if (response.status === 200) {
-      toast.success('The account has been set to donor.')
+      toast.success('The account\'s donor status has been updated.')
       mutate()
       router.reload()
     } else {
