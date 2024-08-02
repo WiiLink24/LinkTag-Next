@@ -39,7 +39,7 @@ function UserInformationCard ({ user, isLoggedIn, isAdmin, isMod }) {
                 <LocalizedString string='overlay'/>: {OVERLAYS.find((overlay) => overlay.value === user.overlay).label}
               </li>
               <li>
-                <LocalizedString string='background' />: {user.background}
+                <LocalizedString string='background' />: {!Number.isNaN(Number(user.background.replace(/.*\//, '').replace(/\.png$/, ''))) ? 'Custom' : user.background}
               </li>
               <li>
                 <LocalizedString string='coin' />: {COINS.find((coin) => coin.value === user.coin).label}
