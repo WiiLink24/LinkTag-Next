@@ -4,9 +4,11 @@ import { Alert, Card, Col, Row } from 'react-bootstrap'
 import LocalizedString from '../shared/LocalizedString'
 import LanguageContext from '../shared/LanguageContext'
 
+import styles from './DonorsCard.module.css'
+
 function ColorBox ({ color, onClick, current }) {
   return (
-    <div id={color} style={{ backgroundColor: color, width: '48px', height: '48px', marginLeft: '8px', marginTop: '8px', boxShadow: current === color ? '0px 0px 7px 2px #0099FF' : null, borderRadius: '8px' }} onClick={(e) => onClick(e, color)} />
+    <div className={styles.colorBox} id={color} style={{ backgroundColor: color, boxShadow: current === color ? '0px 0px 7px 2px #0099FF' : null }} onClick={(e) => onClick(e, color)} />
   )
 }
 
@@ -14,9 +16,9 @@ function ColorPicker ({ current, setColor }) {
   const [color, setColorState] = useState(current)
 
   return (
-    <div id={current} style={{ width: '48px', height: '48px', marginLeft: '8px', marginTop: '8px', boxShadow: current === color ? '0px 0px 7px 2px #0099FF' : null }}>
-      <input id={current} type='color' style={{ height: '100%' }} value={current} onChange={(e) => { setColorState(e.target.value); setColor(e, e.target.value) }} />
-      <p style={{ fontSize: '10px', textAlign: 'center', width: '48px', color: '#DDD' }}>Custom</p>
+    <div id={current} className={styles.colorPicker} style={{ boxShadow: current === color ? '0px 0px 7px 2px #0099FF' : null }}>
+      <input id={current} type='color' value={current} onChange={(e) => { setColorState(e.target.value); setColor(e, e.target.value) }} />
+      <p>Custom</p>
     </div>
   )
 }
@@ -47,7 +49,7 @@ function DonorsCard ({ values, errors, handleChange }) {
             <Row className='mb-3'>
               <Col md={5}>
                 <p><LocalizedString string='name_color' /></p>
-                <div className='colorboxes' style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+                <div className={styles.colorBoxes}>
                   <ColorBox current={values.nameColor} color={'#000000'} onClick={setColor} />
                   <ColorBox current={values.nameColor} color={'#14d314'} onClick={setColor} />
                   <ColorBox current={values.nameColor} color={'#FFD700'} onClick={setColor} />

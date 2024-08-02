@@ -1,0 +1,31 @@
+.colorBox {
+    width: 48px;
+    height: 48px;
+    margin-left: 8px;
+    margin-top: 8px;
+    border-radius: 8px;
+}
+
+.colorPicker {
+    width: 48px;
+    height: 48px;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.colorPicker input {
+    height: 100%
+}
+
+.colorPicker p {
+    font-size: 10px;
+    text-align: center;
+    width: 48px;
+    color: #DDD;
+}
+
+.colorBoxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap
+}
