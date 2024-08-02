@@ -6,6 +6,7 @@ import { withSession } from '@/lib/iron-session'
 import prisma from '@/lib/db'
 import EditYourMiiCard from '@/components/mii/EditYourMiiCard'
 import ENV from '@/lib/constants/environmentVariables'
+import LanguageContext from '@/components/shared/LanguageContext'
 
 export const getServerSideProps = withSession(async ({ req }) => {
   const username = req.session?.username
@@ -35,19 +36,23 @@ export const getServerSideProps = withSession(async ({ req }) => {
 
 function MiiPage ({ miiInfo }) {
   return (
-    <Container>
-      <NextSeo
-        title='Edit Mii'
-        openGraph={{
-          url: `${ENV.BASE_URL}/mii`
-        }}
-      />
-      <Row>
-        <Col>
-          <EditYourMiiCard miiInfo={miiInfo} />
-        </Col>
-      </Row>
-    </Container>
+    <LanguageContext.Helper.Consumer>
+      {(lang) => (
+        <Container>
+          <NextSeo
+            title='My Mii'
+            openGraph={{
+              url: `${ENV.BASE_URL}/mii`
+            }}
+          />
+          <Row>
+            <Col>
+              <EditYourMiiCard miiInfo={miiInfo} />
+            </Col>
+          </Row>
+        </Container>
+      )}
+    </LanguageContext.Helper.Consumer>
   )
 }
 

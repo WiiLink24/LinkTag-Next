@@ -9,7 +9,11 @@ import LocalizedString from './LocalizedString'
 const flags = {
   en: '/img/flag/us.png',
   en_uk: '/img/flag/eu.png',
-  jp: '/img/flag/jp.png'
+  jp: '/img/flag/jp.png',
+  hu: '/img/flag/hu.png',
+  fr_fr: '/img/flag/fr.png',
+  ru: '/img/flag/ru.png',
+  ua: '/img/flag/ua.png'
 }
 
 function AppNavbar () {
@@ -54,7 +58,7 @@ function AppNavbar () {
                   <Nav.Link active={router.pathname === '/'}><LocalizedString string='home' /></Nav.Link>
                 </Link>
                 <Link href='/game-leaderboard' passHref legacyBehavior>
-                  <Nav.Link active={router.pathname === '/game-leaderboard'}>Leaderboard</Nav.Link>
+                  <Nav.Link active={router.pathname === '/game-leaderboard'}><LocalizedString string='leaderboard' /></Nav.Link>
                 </Link>
               </Nav>
               <Nav className='ms-auto'>
