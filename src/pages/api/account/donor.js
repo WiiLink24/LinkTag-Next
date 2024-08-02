@@ -33,22 +33,17 @@ async function exportData (request, response) {
       .json({ error: 'Unauthorized' })
   }
 
-  try {
-    const userObj = await prisma.user.update({
-      data: {
-        isDonor: status
-      },
-      where: {
-        id: user
-      }
-    })
+  const userObj = await prisma.user.update({
+    data: {
+      isDonor: status
+    },
+    where: {
+      id: user
+    }
+  })
 
-    doRender(userObj)
-    return response.status(HTTP_CODE.OK).send(null)
-  } catch (error) {
-    logger.error(error)
-    return response.status(HTTP_CODE.INTERNAL_SERVER_ERROR).send()
-  }
+  doRender(userObj)
+  return response.status(HTTP_CODE.OK).send(null)
 }
 
 const handler = ncWithSession().post(exportData)

@@ -62,7 +62,7 @@ export const getServerSideProps = withSession(async ({ req }) => {
   return { props: { tagInfo: session, user: sessionAccount, language: session?.language || 'en' } }
 })
 
-function EditPage ({ tagInfo, user, language }) {
+function EditPage ({ tagInfo, username, language }) {
   tagInfo.show_avatar = Boolean(tagInfo.show_avatar)
   tagInfo.show_mii = Boolean(tagInfo.show_mii)
 
@@ -205,7 +205,7 @@ function EditPage ({ tagInfo, user, language }) {
                 <Col lg={6}>
                   <ImagesCard
                     values={values}
-                    username={user}
+                    username={username}
                     errors={errors}
                     handleChange={handleChange}
                   />
@@ -228,7 +228,7 @@ function EditPage ({ tagInfo, user, language }) {
 
 EditPage.propTypes = {
   tagInfo: PropTypes.object.isRequired,
-  user: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired
 }
 
