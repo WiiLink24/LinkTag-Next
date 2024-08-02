@@ -2,7 +2,6 @@ import HTTP_CODE from '@/lib/constants/httpStatusCodes'
 import { ncWithSession } from '@/lib/routing'
 import { userIsMod } from '@/lib/utils/databaseUtils'
 import prisma from '@/lib/db'
-import logger from '@/lib/logger'
 import { isBlank } from '@/lib/utils/utils'
 import { doRender } from '@/lib/riitag/neo/renderer'
 
