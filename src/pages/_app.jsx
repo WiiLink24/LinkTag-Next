@@ -8,6 +8,7 @@ import { DefaultSeo } from 'next-seo'
 import { SSRProvider } from 'react-bootstrap'
 import AppFooter from '@/components/shared/AppFooter'
 import ENV from '@/lib/constants/environmentVariables'
+import Head from 'next/head'
 
 function App ({ Component, pageProps }) {
   return (
@@ -68,6 +69,9 @@ function App ({ Component, pageProps }) {
             ]
           }}
         />
+        <Head>
+          <link rel="icon" href="/img/favicon.ico" sizes="any" />
+        </Head>
         <Component {...pageProps} />
         <ToastContainer
           position='bottom-center'
