@@ -4,7 +4,6 @@ import { isBlank, isBoolean } from '@/lib/utils/utils'
 import { isValidCoverRegion } from '@/lib/constants/forms/coverRegions'
 import { isValidCoverType } from '@/lib/constants/forms/coverTypes'
 import { isValidOverlay } from '@/lib/constants/forms/overlays'
-import { BACKGROUNDS } from '@/lib/constants/forms/backgrounds'
 import { isValidFlag } from '@/lib/constants/forms/flags'
 import { isValidCoin } from '@/lib/constants/forms/coins'
 import { isValidFont } from '@/lib/constants/forms/fonts'
@@ -24,28 +23,29 @@ async function updateTagSettings (request, response) {
     background,
     flag,
     coin,
-    font
+    font,
+    nameColor
   } = request.body
   const username = request.session?.username
-
-  function validateFriendCode () {
-    if (!request.body.comment) {
-      return true
-    }
-
-    return true
-  }
-
-  if (!validateFriendCode()) {
-    return response
-      .status(HTTP_CODE.BAD_REQUEST)
-      .send({ error: 'Invalid data' })
-  }
 
   if (!username) {
     return response
       .status(HTTP_CODE.UNAUTHORIZED)
       .json({ error: 'Unauthorized' })
+  }
+
+  if (nameColor) {
+    if (nameColor.length !== 7) {
+      return response
+        .status(HTTP_CODE.BAD_REQUEST)
+        .send({ error: 'Invalid data' })
+    }
+
+    if (!(/(#[a-fA-F0-9]{6})/.test(nameColor))) {
+      return response
+        .status(HTTP_CODE.BAD_REQUEST)
+        .send({ error: 'Invalid data' })
+    }
   }
 
   if (
@@ -62,12 +62,12 @@ async function updateTagSettings (request, response) {
     !isValidCoverType(coverType) ||
     !isValidCoverRegion(coverRegion) ||
     !isValidOverlay(overlay) ||
-    BACKGROUNDS.includes(background) === false ||
     !isValidFlag(flag) ||
     !isValidCoin(coin) ||
     !isValidFont(font) ||
     !isBoolean(showAvatar) ||
-    !isBoolean(showMii)
+    !isBoolean(showMii) ||
+    isBlank(nameColor)
   ) {
     return response
       .status(HTTP_CODE.BAD_REQUEST)
@@ -90,7 +90,8 @@ async function updateTagSettings (request, response) {
         coin,
         font,
         show_avatar: +showAvatar,
-        show_mii: +showMii
+        show_mii: +showMii,
+        nameColor
       }
     })
     await renderTag(user)

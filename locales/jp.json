@@ -16,6 +16,7 @@
     "hidden": "非表示",
     "administrator": "管理者",
     "moderator": "モデレーター",
+    "donor": "寄贈者",
     "play_log": "プレイログ",
 
     "registered_on": "<strong>登録日</strong>",
@@ -42,6 +43,8 @@
     "select_font": "フォントを選択",
 
     "images": "画像",
+    "donators": "寄贈者",
+    "name_color": "名前カラー",
 
     "home": "ホーム",
     "leaderboard": "リーダーボード",

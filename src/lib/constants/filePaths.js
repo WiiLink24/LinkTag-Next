@@ -12,7 +12,8 @@ export const CACHE = Object.freeze({
   COVER: path.resolve(CACHE_PATH, 'cover'),
   MIIS: path.resolve(CACHE_PATH, 'mii', 'user'),
   TAGS: path.resolve(CACHE_PATH, 'tags'),
-  WADS: path.resolve(CACHE_PATH, 'wads')
+  WADS: path.resolve(CACHE_PATH, 'wads'),
+  BACKGROUNDS: path.resolve(CACHE_PATH, 'backgrounds')
 })
 
 export const PUBLIC = Object.freeze({

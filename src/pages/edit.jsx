@@ -14,13 +14,13 @@ import { isValidOverlay } from '@/lib/constants/forms/overlays'
 import { isValidFlag } from '@/lib/constants/forms/flags'
 import { isValidCoin } from '@/lib/constants/forms/coins'
 import { isValidFont } from '@/lib/constants/forms/fonts'
-import { BACKGROUNDS } from '@/lib/constants/forms/backgrounds'
 import GeneralCard from '@/components/edit/GeneralCard'
 import FontCard from '@/components/edit/FontCard'
 import ImagesCard from '@/components/edit/ImagesCard'
 import ENV from '@/lib/constants/environmentVariables'
 import LanguageContext from '@/components/shared/LanguageContext'
 import AppNavbar from '@/components/shared/AppNavbar'
+import DonorsCard from '@/components/edit/DonorsCard'
 
 export const getServerSideProps = withSession(async ({ req }) => {
   // get the current user session
@@ -43,7 +43,9 @@ export const getServerSideProps = withSession(async ({ req }) => {
         coin: true,
         font: true,
         show_avatar: true,
-        show_mii: true
+        show_mii: true,
+        nameColor: true,
+        isDonor: true
       }
     })
     : null
@@ -57,10 +59,10 @@ export const getServerSideProps = withSession(async ({ req }) => {
     }
   }
 
-  return { props: { tagInfo: session, language: session?.language || 'en' } }
+  return { props: { tagInfo: session, user: sessionAccount, language: session?.language || 'en' } }
 })
 
-function EditPage ({ tagInfo, language }) {
+function EditPage ({ tagInfo, username, language }) {
   tagInfo.show_avatar = Boolean(tagInfo.show_avatar)
   tagInfo.show_mii = Boolean(tagInfo.show_mii)
 
@@ -79,7 +81,8 @@ function EditPage ({ tagInfo, language }) {
           background: tagInfo.background,
           flag: tagInfo.flag,
           coin: tagInfo.coin,
-          font: tagInfo.font
+          font: tagInfo.font,
+          nameColor: tagInfo.nameColor
         }}
         validate={(values) => {
           const errors = {}
@@ -114,8 +117,6 @@ function EditPage ({ tagInfo, language }) {
 
           if (!values.background) {
             errors.background = 'Required'
-          } else if (BACKGROUNDS.includes(values.background) === false) {
-            errors.background = 'Invalid Background'
           }
 
           if (!values.flag) {
@@ -153,12 +154,12 @@ function EditPage ({ tagInfo, language }) {
                 render ({ data, toastProps }) {
                   if (data.status !== 200) {
                     toastProps.type = 'error'
-                    return 'An error occured, please try again later'
+                    return 'An error occurred, please try again later'
                   }
                   return 'Saved!'
                 }
               },
-              error: 'An error occured, please try again later.'
+              error: 'An error occurred, please try again later.'
             }
           )
 
@@ -204,9 +205,17 @@ function EditPage ({ tagInfo, language }) {
                 <Col lg={6}>
                   <ImagesCard
                     values={values}
+                    username={username}
                     errors={errors}
                     handleChange={handleChange}
                   />
+
+                  {tagInfo.isDonor &&
+                  <DonorsCard
+                    values={values}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />}
                 </Col>
               </Row>
             </Container>
@@ -219,6 +228,7 @@ function EditPage ({ tagInfo, language }) {
 
 EditPage.propTypes = {
   tagInfo: PropTypes.object.isRequired,
+  username: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired
 }
 

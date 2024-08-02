@@ -17,6 +17,7 @@
     "hidden": "Hidden",
     "administrator": "Administrator",
     "moderator": "Moderator",
+    "donor": "Donator",
     "play_log": "Play Log",
 
     "registered_on": "<strong>Registered</strong>",
@@ -43,6 +44,8 @@
     "select_font": "Select Font",
 
     "images": "Images",
+    "donators": "Donator Benefits",
+    "name_color": "Name Colours",
 
     "home": "Home",
     "profile": "Profile",

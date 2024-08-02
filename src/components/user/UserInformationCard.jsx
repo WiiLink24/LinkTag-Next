@@ -17,6 +17,7 @@ import BanAccountButton from '../account/BanAccountButton'
 import ForceHiddenAccountButton from '../account/ForceHiddenAccountButton'
 import LanguageContext from '../shared/LanguageContext'
 import LocalizedString from '../shared/LocalizedString'
+import DonorButton from '@/components/account/DonorButton'
 
 function UserInformationCard ({ user, isLoggedIn, isAdmin, isMod }) {
   return (
@@ -29,6 +30,7 @@ function UserInformationCard ({ user, isLoggedIn, isAdmin, isMod }) {
             {(user.publicOverride === 0 || (user.publicOverride === 1 && isMod)) && (<Badge bg='danger' className='mb-2'><LocalizedString string='hidden'/></Badge>)}
             {user.role === 'admin' && (<Badge bg='success' className='mb-2'><LocalizedString string='administrator'/></Badge>)}
             {user.role === 'mod' && (<Badge bg='success' className='mb-2'><LocalizedString string='moderator'/></Badge>)}
+            {user.isDonor === true && (<Badge bg='primary' className='mb-2'><LocalizedString string='donor'/></Badge>)}
             <ul className='list-unstyled m-0'>
               <li>
                 <LocalizedString string='display_name'/>: {user.display_name}
@@ -37,7 +39,7 @@ function UserInformationCard ({ user, isLoggedIn, isAdmin, isMod }) {
                 <LocalizedString string='overlay'/>: {OVERLAYS.find((overlay) => overlay.value === user.overlay).label}
               </li>
               <li>
-                <LocalizedString string='background' />: {user.background}
+                <LocalizedString string='background' />: {!Number.isNaN(Number(user.background.replace(/.*\//, '').replace(/\.png$/, ''))) ? 'Custom' : user.background}
               </li>
               <li>
                 <LocalizedString string='coin' />: {COINS.find((coin) => coin.value === user.coin).label}
@@ -71,6 +73,7 @@ function UserInformationCard ({ user, isLoggedIn, isAdmin, isMod }) {
                     <InputGroup>
                       <BanAccountButton isBanned={user.isBanned} id={user.id} />
                       <ForceHiddenAccountButton isHidden={user.publicOverride != null} id={user.id} />
+                      <DonorButton isDonor={user.isDonor} id={user.id} />
                     </InputGroup>
                   </div>
                 )}

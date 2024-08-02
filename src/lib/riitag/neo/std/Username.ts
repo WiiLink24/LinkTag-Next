@@ -33,6 +33,7 @@ export default class Username extends ModuleBase {
     logger.info(`User Font: ${user.font}`)
     logger.info(`Font Info: ${this.font.name} ${this.font.size} ${this.font.style} ${this.font.color} ${this.font.force}`)
 
+    if (user.isDonor === true) this.font.color = user.nameColor
     drawText(ctx, this.font, user.display_name, this.x, this.y, this.align)
   }
 }
