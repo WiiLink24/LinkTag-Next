@@ -12,7 +12,7 @@ import { Request, Response } from 'express'
 import { setFileHeaders } from '../../../lib/utils/utils'
 import fs from 'node:fs'
 
-async function backgroundPost (request: Request, response: Response) {
+async function postBackground (request: Request, response: Response) {
   if (request.socket.bytesRead > 2_107_638) {
     return response
       .status(HTTP_CODE.REQUEST_ENTITY_TOO_LARGE)
@@ -84,7 +84,7 @@ async function backgroundPost (request: Request, response: Response) {
   return response.status(HTTP_CODE.OK).send()
 }
 
-async function backgroundGet (request: Request, response: Response) {
+async function getBackground (request: Request, response: Response) {
   // @ts-ignore
   const username = request.session?.username
 
@@ -101,7 +101,7 @@ async function backgroundGet (request: Request, response: Response) {
     .send(await fs.promises.readFile(path.resolve(CACHE.BACKGROUNDS, username + '.png')))
 }
 
-const handler = ncWithSession().post(backgroundPost).get(backgroundGet)
+const handler = ncWithSession().post(postBackground).get(getBackground)
 
 export const config = {
   api: {
