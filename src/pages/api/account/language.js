@@ -25,12 +25,6 @@ async function exportData (request, response) {
       .json({ error: 'Unauthorized' })
   }
 
-  if (!(await userIsMod(loggedInUser))) {
-    return response
-      .status(HTTP_CODE.UNAUTHORIZED)
-      .json({ error: 'Unauthorized' })
-  }
-
   try {
     await prisma.user.update({
       data: {
