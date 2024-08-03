@@ -202,7 +202,7 @@ export default class Covers extends ModuleBase {
 
     await prisma.playlog.deleteMany({
       where: {
-        game: null
+        game: undefined
       }
     })
 
