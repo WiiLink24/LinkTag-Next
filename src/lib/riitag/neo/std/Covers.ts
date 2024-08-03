@@ -226,7 +226,7 @@ export default class Covers extends ModuleBase {
         }
       }
     })
-    
+
     await prisma.playlog.deleteMany({
       where: {
         game: null
@@ -234,12 +234,12 @@ export default class Covers extends ModuleBase {
     })
 
     for (const entry of playlog) {
-      if (!entry.game || entry.game.console == CONSOLE.THREEDS || entry.game.console == CONSOLE.SWITCH) {
-         await prisma.playlog.delete({
+      if (!entry.game || entry.game.console === CONSOLE.THREEDS || entry.game.console === CONSOLE.SWITCH) {
+        await prisma.playlog.delete({
           where: {
             playlog_id: entry.playlog_id
           }
-         })
+        })
       }
     }
 
