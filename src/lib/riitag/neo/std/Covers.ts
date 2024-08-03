@@ -192,20 +192,6 @@ export default class Covers extends ModuleBase {
    * @returns
    */
   async getAllUserCovers (user: user): Promise<string[]> {
-    await prisma.playlog.deleteMany({
-      where: {
-        game: {
-          console: CONSOLE.THREEDS
-        }
-      }
-    })
-
-    await prisma.playlog.deleteMany({
-      where: {
-        game: undefined
-      }
-    })
-
     const playlog = await prisma.playlog.findMany({
       where: {
         user: {
