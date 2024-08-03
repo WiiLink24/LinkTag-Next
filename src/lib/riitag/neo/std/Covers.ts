@@ -192,6 +192,20 @@ export default class Covers extends ModuleBase {
    * @returns
    */
   async getAllUserCovers (user: user): Promise<string[]> {
+    await prisma.playlog.deleteMany({
+      where: {
+        game: {
+          console: CONSOLE.THREEDS
+        }
+      }
+    })
+
+    await prisma.playlog.deleteMany({
+      where: {
+        game: null
+      }
+    })
+
     const playlog = await prisma.playlog.findMany({
       where: {
         user: {
@@ -218,20 +232,6 @@ export default class Covers extends ModuleBase {
     if (playlog.length === 0) {
       return []
     }
-
-    await prisma.playlog.deleteMany({
-      where: {
-        game: {
-          console: CONSOLE.THREEDS
-        }
-      }
-    })
-
-    await prisma.playlog.deleteMany({
-      where: {
-        game: null
-      }
-    })
 
     for (const entry of playlog) {
       if (!entry.game || entry.game.console === CONSOLE.THREEDS || entry.game.console === CONSOLE.SWITCH) {
