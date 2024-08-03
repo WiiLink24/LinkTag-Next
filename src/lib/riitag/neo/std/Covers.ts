@@ -199,13 +199,8 @@ export default class Covers extends ModuleBase {
         }
       },
       select: {
-        playlog_id: true,
-        game: {
-          select: {
-            game_id: true,
-            console: true
-          }
-        }
+        game_pk: true,
+        playlog_id: true
       },
       orderBy: {
         played_on: 'desc'
@@ -220,18 +215,44 @@ export default class Covers extends ModuleBase {
     }
 
     for (const entry of playlog) {
-      if (!entry.game || entry.game.console === CONSOLE.THREEDS || entry.game.console === CONSOLE.SWITCH) {
+      const doesntmatter = await prisma.game.findFirst({
+        where: {
+          game_pk: entry.game_pk
+        }
+      })
+      if (!doesntmatter || doesntmatter.console === CONSOLE.THREEDS) {
         await prisma.playlog.delete({
           where: {
-            playlog_id: entry.playlog_id
+            playlog_id: entry.playlog_id 
           }
         })
       }
     }
 
+    const otherPlaylog = await prisma.playlog.findMany({
+      where: {
+        user: {
+          id: user.id
+        }
+      },
+      select: {
+        game: {
+          select: {
+            console: true,
+            game_id: true
+          }
+        }
+      },
+      orderBy: {
+        played_on: 'desc'
+      },
+      distinct: ['game_pk'],
+      take: this.max
+    })
+
     const coverPaths = []
 
-    for (const logEntry of playlog) {
+    for (const logEntry of otherPlaylog) {
       coverPaths.push(this.getCover(
         logEntry.game.console,
         user.cover_type,
