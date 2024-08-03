@@ -6,6 +6,7 @@ import ENV from '@/lib/constants/environmentVariables'
 import styles from '@/styles/modules/editor-text.module.scss'
 import prisma from '@/lib/db'
 import { isBlank } from '@/lib/utils/utils'
+import AppNavbar from '@/components/shared/AppNavbar'
 
 export async function getStaticProps () {
   const about = await prisma.sys.findUnique({
@@ -26,6 +27,8 @@ export async function getStaticProps () {
 
 function AboutPage ({ about }) {
   return (
+    <>
+    <AppNavbar />
     <Container>
       <NextSeo
         title='About LinkTag'
@@ -46,6 +49,7 @@ function AboutPage ({ about }) {
         />
       </Row>
     </Container>
+    </>
   )
 }
 
