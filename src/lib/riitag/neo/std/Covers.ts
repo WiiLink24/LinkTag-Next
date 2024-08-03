@@ -199,6 +199,7 @@ export default class Covers extends ModuleBase {
         }
       },
       select: {
+        playlog_id: true,
         game: {
           select: {
             game_id: true,
@@ -216,6 +217,30 @@ export default class Covers extends ModuleBase {
     // Return a default empty array if the user has no playlog.
     if (playlog.length === 0) {
       return []
+    }
+
+    await prisma.playlog.deleteMany({
+      where: {
+        game: {
+          console: CONSOLE.THREEDS
+        }
+      }
+    })
+
+    await prisma.playlog.deleteMany({
+      where: {
+        game: null
+      }
+    })
+
+    for (const entry of playlog) {
+      if (!entry.game || entry.game.console === CONSOLE.THREEDS || entry.game.console === CONSOLE.SWITCH) {
+        await prisma.playlog.delete({
+          where: {
+            playlog_id: entry.playlog_id
+          }
+        })
+      }
     }
 
     const coverPaths = []
