@@ -32,7 +32,7 @@ export const getServerSideProps = withSession(async ({ req, query }) => {
 
   const fix = async (username) => {
     await client.connect()
-    const userId = await client.query('SELECT * FROM user WHERE username=$1', [username.toString()])
+    const userId = await client.query('SELECT * FROM public.user WHERE username=$1', [username.toString()])
     const res = await client.query('SELECT * FROM playlog WHERE user_id=$1', [userId.rows[0].id])
     console.log(res.rows) // Hello world!
 
