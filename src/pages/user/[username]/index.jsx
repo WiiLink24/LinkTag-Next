@@ -43,18 +43,6 @@ export const getServerSideProps = withSession(async ({ req, query }) => {
       isPublic: true,
       publicOverride: true,
       banned_user: true,
-      playlog: {
-        select: {
-          game: true,
-          play_time: true,
-          play_count: true,
-          played_on: true
-        },
-        orderBy: {
-          played_on: 'desc'
-        },
-        distinct: ['game_pk']
-      },
       game_sessions: {
         select: {
           game: true,
@@ -100,7 +88,6 @@ export const getServerSideProps = withSession(async ({ req, query }) => {
       language: loggedInUser?.language || 'en',
       banReason: JSON.parse(safeJsonStringify(user.banned_user)),
       event: JSON.parse(safeJsonStringify(event)),
-      playlog: JSON.parse(safeJsonStringify(user.playlog)),
       session: JSON.parse(safeJsonStringify(user.game_sessions))
     }
   }
@@ -145,7 +132,6 @@ function ProfilePage ({ user, isLoggedIn, banReason, loggedInUser, event, playlo
                 />
               </div>
 
-              <PlayLog playlog={playlog} current={session} />
             </Col>
             : ''}
 
