@@ -1,6 +1,5 @@
 import { ncWithSession } from '@/lib/routing'
 import { generateRandomKey, isBlank } from '@/lib/utils/utils'
-import { LOGIN_ERROR_URI } from '@/lib/utils/oAuthUtils'
 import logger from '@/lib/logger'
 import prisma from '@/lib/db'
 import ENV from '@/lib/constants/environmentVariables'
@@ -9,6 +8,7 @@ import HTTP_CODE from '@/lib/constants/httpStatusCodes'
 const PROVIDER_ID = 'discord'
 const BASE_URL = 'https://discord.com/api'
 const REDIRECT_URI = `${ENV.BASE_URL}/api/auth/login/discord`
+const LOGIN_ERROR_URI = `${ENV.BASE_URL}/?error=1`
 
 async function generateAuthorizeUrl (request, response) {
   const authUri = new URL(`${BASE_URL}/oauth2/authorize`)

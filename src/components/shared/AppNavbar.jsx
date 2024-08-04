@@ -41,7 +41,6 @@ function AppNavbar () {
               <img
                 alt="LinkTag Logo"
                 className="d-inline-block align-text-top no-shadow"
-                height={46}
                 src="/logo.png"
                 width={128}
               />

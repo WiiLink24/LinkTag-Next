@@ -126,10 +126,10 @@ model user {
   created_at     DateTime        @default(dbgenerated("CURRENT_TIMESTAMP(3)"))
   updated_at     DateTime        @default(dbgenerated("CURRENT_TIMESTAMP(3)"))
   badge          String?         @db.VarChar(50)
+  language       String          @default("en") @db.VarChar(11)
   isBanned       Int             @default(0) @db.SmallInt
   isPublic       Int             @default(1) @db.SmallInt
   publicOverride Int?            @db.SmallInt
-  language       String          @default("en") @db.VarChar(11)
   accounts       accounts[]
   banned_user    banned_user[]
   game_sessions  game_sessions[]
