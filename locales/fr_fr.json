@@ -1,0 +1,65 @@
+{
+    "name": "Français (France)",
+
+    "welcome": "Bienvenue sur LinkTag !",
+    "join_others": "Rejoingnez {0} autres joueurs qui ont joués à des jeux {1} fois !",
+    "credits": "Crédits",
+    "discord": "Se connecter avec Discord",
+    "carasol_LinkTag": "Linktag de <a href='user/{0}'>{1}</a>",
+    "supported_platforms": "Plateformes supportées",
+    "banned_reason": "Ce compte a été banni. Raison : {0}",
+    "game_id": "Jeu / ID",
+    "play_time": "Temps de jeu",
+    "last_played": "Dernière session",
+    "play_count": "Nombre de sessions",
+    "user_info": "Information de l'utilisateur",
+    "banned": "Banni",
+    "hidden": "Caché",
+    "administrator": "Administrateur",
+    "moderator": "Modérateur",
+    "donor": "Donateur",
+    "play_log": "Historique de jeu",
+
+    "registered_on": "<strong>Inscrit le</strong>",
+    "overlay": "<strong>Disposition</strong>",
+    "background": "<strong>Arrière-plan</strong>",
+    "coin": "<strong>Pièce</strong>",
+    "font": "<strong>Police</strong>",
+    "flag": "<strong>Drapeau</strong>",
+    "cover_region": "<strong>Région de la jaquette</strong>",
+    "cover_type": "<strong>Type de la jaquette</strong>",
+
+    "edit_tag": "Modifier le tag",
+
+    "general": "Général",
+    "display_name": "<strong>Nom affiché</strong>",
+    "friend_code": "<strong>Code ami</strong>",
+
+    "cover_region_explanation": "LinkTag essaiera la région du jeu et se rabattra sur l'anglais\ns'il ne trouve pas de jaquette.",
+    "show_avatar": "Afficher l'avatar",
+
+    "select_overlay": "Sélectionner une disposition",
+    "select_background": "Sélectionner un arrière-plan",
+    "select_coin": "Sélectionner une pièce",
+    "select_font": "Sélectionner une police",
+
+    "images": "Images",
+    "donators": "Avantages donateurs",
+    "name_color": "Couleurs de noms",
+
+    "home": "Accueil",
+    "leaderboard": "Leaderboard",
+    "profile": "Profil",
+    "account": "Mon compte",
+    "edit_mii": "Modifier le Mii",
+    "logout": "Déconnexion",
+
+    "search": "Recherche",
+    "previous": "Précédent",
+    "next": "Suivant",
+
+    "playtimes_since": "Joué <strong>{0}</strong> fois depuis {1}",
+    "total_playtime": "Joué <strong>{0}</strong> au total",
+
+    "date_format": "DD/MM/YYYY"
+}

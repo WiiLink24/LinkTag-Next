@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { React, useState } from 'react'
 import { Button, Card, Col, Modal, Row } from 'react-bootstrap'
+import LocalizedString from '@/components/shared/LocalizedString'
 
 function SelectCoinModal ({ options, field, form }) {
   const [show, setShow] = useState(false)
@@ -15,7 +16,7 @@ function SelectCoinModal ({ options, field, form }) {
   return (
     <>
       <Button variant='primary' onClick={handleShow}>
-        Select Coin
+        <LocalizedString string='select_coin' />
       </Button>
 
       <Modal size='lg' fullscreen='lg-down' show={show} onHide={handleClose}>

@@ -2,7 +2,7 @@
     "name": "日本語",
 
     "welcome": "LinkTagへようこそ！",
-    "join_others": "ゲームを{0}回プレイしたことがある他の{1}人のゲーマーに参加しよう！",
+    "join_others": "ゲームを{0}回プレイした他の{1}人のゲーマーに参加しよう！",
     "discord": "Discordでログイン",
     "carasol_LinkTag": "<a href='user/{0}'>{1}</a>のLinkTag",
     "supported_platforms": "対応プラットホーム",
@@ -45,7 +45,6 @@
 
     "home": "ホーム",
     "leaderboard": "リーダーボード",
-
     "profile": "プロファイル",
     "account": "マイアカウント",
     "edit_mii": "Miiを編集",

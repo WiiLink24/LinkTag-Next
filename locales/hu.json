@@ -1,0 +1,75 @@
+{
+    "name": "magyar",
+
+    "welcome": "Isten hozott a LinkTag-honlapon!",
+    "join_others": "Csatlakozz {0} másik felhasználóhoz, akik {1} alkalommal játszottak különböző játékokkal!",
+    "credits": "Stáblista",
+    "discord": "Bejelentkezés Discord-fiókkal",
+    "carasol_LinkTag": "<a href='user/{0}'>{1}</a> LinkTagje",
+    "supported_platforms": "Támogatott platformok",
+    "banned_reason": "Ez a fiók kitiltásra került. A kitiltás oka: {0}",
+    "game_id": "Cím / Azonosító",
+    "play_time": "Játékidő",
+    "last_played": "Legutóbb játszott",
+    "play_count": "Indítások száma",
+    "user_info": "Felhasználóinformáció",
+    "banned": "Kitiltva",
+    "hidden": "Elrejtve",
+    "administrator": "Rendszergazda",
+    "moderator": "Moderátor",
+    "donor": "Támogató",
+    "play_log": "Játéknapló",
+
+    "registered_on": "<strong>Regisztráció dátuma</strong>",
+    "overlay": "<strong>Átfedés</strong>",
+    "background": "<strong>Háttér</strong>",
+    "coin": "<strong>Érme</strong>",
+    "font": "<strong>Betűtípus</strong>",
+    "flag": "<strong>Zászló</strong>",
+    "cover_region": "<strong>Borítórégió</strong>",
+    "cover_type": "<strong>Borítótípus</strong>",
+
+    "edit_tag": "LinkTag szerkesztése",
+
+    "general": "Általános",
+    "display_name": "<strong>Megjelenített név</strong>",
+    "friend_code": "<strong>Barátkód</strong>",
+
+    "cover_region_explanation": "A LinkTag megpróbálja a megadott régió borítóját megjeleníteni.\nHa ez nem sikerül, akkor az angol borító lesz megjelenítve.",
+    "show_avatar": "Profilkép mutatása",
+
+    "select_overlay": "Módosítás",
+    "select_background": "Módosítás",
+    "select_coin": "Módosítás",
+    "select_font": "Módosítás",
+
+    "images": "Képek",
+    "donators": "Támogatói előnyök",
+    "name_color": "Névszínek",
+
+    "home": "Kezdőlap",
+    "leaderboard": "Ranglista",
+    "profile": "Profil",
+    "account": "Saját fiók",
+    "edit_mii": "Mii szerkesztése",
+    "logout": "Kijelentkezés",
+
+    "search": "Keresés",
+    "previous": "Előző",
+    "next": "Következő",
+
+    "playtimes_since": "{1} óta <strong>{0}</strong> alkalommal játszott",
+    "total_playtime": "Összesen <strong>{0}</strong> játszott",
+
+    "guest_mii": "Guest Mii",
+    "cmoc_channel": "Check Mii Out Channel",
+    "upload": "Upload",
+    "cmoc_entry": "Check Mii Out Channel Entry Number",
+    "cmoc_entry_error": "Entry Number must be exactly 12 numbers long (ignoring dashes).",
+    "cmoc_entry_subtext": "You can browse all Miis from the Check Mii Out Channel on mii.rc24.xyz. The entry number can be entered with or without dashes",
+    "save": "Save",
+    "upload_qr": "Upload your Mii binary file or QR code.",
+    "qr_code_subtext": "Some QR codes may not be supported. Known working codes are from 3DS, Wii U, Miitomo, Tomodachi Life and Miitopia (.jpg). Known working binary files are in Wii format (.mae).",
+
+    "date_format": "YYYY. MM. DD."
+}
