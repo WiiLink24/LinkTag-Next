@@ -196,26 +196,12 @@ export default class Covers extends ModuleBase {
     return cover
   }
 
-  async fix (userId: number) {
-    const res = await client.query('SELECT * FROM playlog WHERE user_id=$1', [userId])
-    console.log(res.rows) // Hello world!
-
-    for (const row of res.rows) {
-      const res = await client.query('SELECT * FROM game WHERE game_pk=$1', [row.game_pk])
-      if (res.rows.length === 0) {
-        console.log('No game found for game_pk', row.game_pk)
-        await client.query('DELETE FROM playlog WHERE game_pk=$1', [row.game_pk])
-      }
-    }
-  }
-
   /**
    * Get all of the covers for a user.
    * @param user The user to get the covers for.
    * @returns
    */
   async getAllUserCovers (user: user): Promise<string[]> {
-    await this.fix(user.id)
     const playlog = await prisma.playlog.findMany({
       where: {
         user: {
