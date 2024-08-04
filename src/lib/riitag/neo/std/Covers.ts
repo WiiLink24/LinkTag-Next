@@ -11,7 +11,7 @@ import { user } from '@prisma/client'
 
 const xml2js = require('xml2js')
 
-const pg = require('pg');
+const pg = require('pg')
 const { Client } = pg
 const client = new Client({
   host: 'localhost',
@@ -197,22 +197,16 @@ export default class Covers extends ModuleBase {
   }
 
   async fix (userId: number) {
-    await client.connect()
     const res = await client.query('SELECT * FROM playlog WHERE user_id=$1', [userId])
     console.log(res.rows) // Hello world!
 
     for (const row of res.rows) {
-      console.log(row)
-
       const res = await client.query('SELECT * FROM game WHERE game_pk=$1', [row.game_pk])
       if (res.rows.length === 0) {
         console.log('No game found for game_pk', row.game_pk)
         await client.query('DELETE FROM playlog WHERE game_pk=$1', [row.game_pk])
       }
-      console.log(res.rows)
     }
-
-    await client.end()
   }
 
   /**
