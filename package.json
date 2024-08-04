@@ -17,7 +17,7 @@
     "dev:db-validate": "dotenv -e .env.development.local prisma validate",
     "prod:migrate": "dotenv -e .env.production.local prisma migrate deploy",
     "prod:build": "next build",
-    "prod:start": "next start",
+    "prod:start": "next start --port 42069",
     "global:check-dependencies": "npm-check --skip-unused"
   },
   "devDependencies": {
