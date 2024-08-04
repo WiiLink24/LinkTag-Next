@@ -1114,6 +1114,10 @@ export const FLAGS = Object.freeze([
   {
     value: 'wiiu',
     label: 'Wii U'
+  },
+  {
+    value: 'flag_ct',
+    label: 'CT'
   }
 ])
 

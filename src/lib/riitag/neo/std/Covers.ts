@@ -11,6 +11,16 @@ import { user } from '@prisma/client'
 
 const xml2js = require('xml2js')
 
+const pg = require('pg')
+const { Client } = pg
+const client = new Client({
+  host: 'localhost',
+  user: 'postgres',
+  password: 'postgres',
+  database: 'riitag',
+  port: 2345
+})
+
 export default class Covers extends ModuleBase {
   x: number
   y: number

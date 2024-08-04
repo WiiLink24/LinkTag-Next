@@ -17,7 +17,7 @@
     "dev:db-validate": "dotenv -e .env.development.local prisma validate",
     "prod:migrate": "dotenv -e .env.production.local prisma migrate deploy",
     "prod:build": "next build",
-    "prod:start": "next start",
+    "prod:start": "next start --port 42069",
     "global:check-dependencies": "npm-check --skip-unused"
   },
   "devDependencies": {
@@ -57,6 +57,7 @@
     "next-connect": "0.13.0",
     "next-seo": "5.15.0",
     "nextjs-progressbar": "0.0.16",
+    "pg": "^8.12.0",
     "pino": "8.8.0",
     "pino-pretty": "^10.3.1",
     "prop-types": "15.8.1",

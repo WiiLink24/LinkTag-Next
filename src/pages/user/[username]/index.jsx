@@ -20,6 +20,38 @@ export const getServerSideProps = withSession(async ({ req, query }) => {
   // Get the logged in user. This can be null.
   const session = req.session?.username
 
+  const pg = require('pg')
+  const { Client } = pg
+  const client = new Client({
+    host: 'localhost',
+    user: 'postgres',
+    password: 'postgres',
+    database: 'riitag',
+    port: 2345
+  })
+
+  const fix = async (username) => {
+    await client.connect()
+    const userId = await client.query('SELECT * FROM public.user WHERE username=$1', [username.toString()])
+    const res = await client.query('SELECT * FROM playlog WHERE user_id=$1', [userId.rows[0].id])
+    console.log(res.rows) // Hello world!
+
+    for (const row of res.rows) {
+      console.log(row)
+
+      const res = await client.query('SELECT * FROM game WHERE game_pk=$1', [row.game_pk])
+      if (res.rows.length === 0) {
+        console.log('No game found for game_pk', row.game_pk)
+        await client.query('DELETE FROM playlog WHERE game_pk=$1', [row.game_pk])
+      }
+      console.log(res.rows)
+    }
+
+    await client.end()
+  }
+
+  await fix(username)
+
   // get user and ban reason
   const user = await prisma.user.findUnique({
     where: {

@@ -1,6 +1,5 @@
 import HTTP_CODE from '@/lib/constants/httpStatusCodes'
 import { ncWithSession } from '@/lib/routing'
-import { userIsMod } from '@/lib/utils/databaseUtils'
 import prisma from '@/lib/db'
 import logger from '@/lib/logger'
 import { isBlank } from '@/lib/utils/utils'
@@ -20,12 +19,6 @@ async function exportData (request, response) {
   }
 
   if (!loggedInUser) {
-    return response
-      .status(HTTP_CODE.UNAUTHORIZED)
-      .json({ error: 'Unauthorized' })
-  }
-
-  if (!(await userIsMod(loggedInUser))) {
     return response
       .status(HTTP_CODE.UNAUTHORIZED)
       .json({ error: 'Unauthorized' })
