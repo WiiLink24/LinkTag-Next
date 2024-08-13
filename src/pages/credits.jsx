@@ -8,6 +8,7 @@ import ENV from '@/lib/constants/environmentVariables'
 import { withSession } from '@/lib/iron-session'
 import prisma from '@/lib/db'
 import Contributor from '@/components/credits/Contributor'
+import AppNavbar from '@/components/shared/AppNavbar'
 
 export const getServerSideProps = withSession(async ({ req }) => {
   const username = req.session?.username
@@ -34,6 +35,8 @@ export const getServerSideProps = withSession(async ({ req }) => {
 
 function CreditsPage ({ display_name: wiitagName }) {
   return (
+    <>
+    <AppNavbar />
     <Container>
       <NextSeo
         title='Credits'
@@ -61,11 +64,11 @@ function CreditsPage ({ display_name: wiitagName }) {
               Added official LinkTag support to his modification of USB Loader GX
             </Contributor>
             <Contributor name='Brawl345' link='https://wiidatabase.de'>
-              Completely rewrote LinkTag into version 2.0 (LinkTag-Next)
+              Completely rewrote RiiTag into version 2.0 (RiiTag-Next)
             </Contributor>
             <Contributor name='daileon'>
               Created Wiinnertag (no longer available), which heavily inspired
-              LinkTag
+              RiiTag
             </Contributor>
             <Contributor name='dhtdht020'>
               Created some of the LinkTag overlays
@@ -136,6 +139,7 @@ function CreditsPage ({ display_name: wiitagName }) {
         </Col>
       </Row>
     </Container>
+    </>
   )
 }
 

@@ -6,6 +6,7 @@ import prisma from '@/lib/db'
 import styles from '@/styles/modules/editor-text.module.scss'
 import ENV from '@/lib/constants/environmentVariables'
 import { isBlank } from '@/lib/utils/utils'
+import AppNavbar from '@/components/shared/AppNavbar'
 
 export async function getStaticProps () {
   const tos = await prisma.sys.findUnique({
@@ -24,6 +25,8 @@ export async function getStaticProps () {
 
 function TosPage ({ tos }) {
   return (
+    <>
+    <AppNavbar />
     <Container>
       <NextSeo
         title='Terms of Service'
@@ -43,6 +46,7 @@ function TosPage ({ tos }) {
         />
       </Row>
     </Container>
+    </>
   )
 }
 

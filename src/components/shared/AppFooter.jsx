@@ -39,7 +39,7 @@ function AppFooter () {
               -{' '}
               <a
                 className='text-muted'
-                href='https://github.com/bennyman123abc/LinkTag-Next'
+                href='https://github.com/WiiLink24/LinkTag-Next'
                 rel='external noopener noreferrer'
                 target='_blank'
               >
